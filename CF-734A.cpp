@@ -66,37 +66,19 @@ int mpow(int base, int exp);        //pow fumction O(logn) time
 
 
 void solve(){
-   int n,a,b;
-   cin>>n>>a>>b;
-   unordered_set<ll>s;
-   s.insert(1);
-   CHECK;
-   ll maxx = 1,low=1;
-   while(maxx < n){
-     for(auto it= s.find(low);it!=s.end();it++){
-       ll n1=*it *a;
-       ll n2 = *it + b;
-      auto it1= s.find(n1);
-       auto it2 = s.find(n2);
-       if(it1==s.end()){
-         s.insert(n1);
-         maxx= max(maxx,n1);
-       }
-       if(it1==s.end()){
-         s.insert(n2);
-         maxx= max(maxx,n2);
-       }
-       if(it1!=s.end() && it2!=s.end()){
-         low = min(n1,n2);
-       }
-     }
+   int n;
+   cin>>n;
+   string s;
+   cin>>s;
+   int ca=0;
+   rep(i,0,n){
+       if(s[i]=='A') ca++;
    }
-   auto it = s.find(n);
-   if(it!=s.end()){
-     cout<<"Yes"<<endl;
+   if(ca>n-ca) cout<<"Anton"<<endl;
+   else if(ca<n-ca) cout<<"Danik"<<endl;
+   else cout<<"Friendship"<<endl;
 
-   }
- else cout<<"No"<<endl;
+ return;
 }
 
 
@@ -109,7 +91,7 @@ int32_t main() {
 	#endif
 
 	ll t=1;
-    cin >> t;					
+   // cin >> t;					
     while(t--)
 		solve();
    return 0;

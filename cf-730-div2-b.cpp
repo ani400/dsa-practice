@@ -48,15 +48,15 @@ const int mod = 1'000'000'007;
 
 
 /////////////////////functions for simplicity ///////////////////////////////
-template<typename... T>
-void read(T&... args){
-	((cin >> args), ...);     // read(x,y,z);
-}                             // any no. of arguements)
+// template<typename... T>
+// void read(T&... args){
+// 	((cin >> args), ...);     // read(x,y,z);
+// }                             // any no. of arguements)
 
-template<typename... T>       
-void write(T&&... args){          // && rvalue reference (new for c++)            //write(x,y,z,cc);
-	((cout << args<<" " ), ...);          // any no. of arguements)
-}
+// template<typename... T>       
+// void write(T&&... args){          // && rvalue reference (new for c++)            //write(x,y,z,cc);
+// 	((cout << args<<" " ), ...);          // any no. of arguements)
+// }
 
 int mpow(int base, int exp);        //pow fumction O(logn) time
 //////////////////////////////////////////////////////////////////////////
@@ -66,37 +66,18 @@ int mpow(int base, int exp);        //pow fumction O(logn) time
 
 
 void solve(){
-   int n,a,b;
-   cin>>n>>a>>b;
-   unordered_set<ll>s;
-   s.insert(1);
-   CHECK;
-   ll maxx = 1,low=1;
-   while(maxx < n){
-     for(auto it= s.find(low);it!=s.end();it++){
-       ll n1=*it *a;
-       ll n2 = *it + b;
-      auto it1= s.find(n1);
-       auto it2 = s.find(n2);
-       if(it1==s.end()){
-         s.insert(n1);
-         maxx= max(maxx,n1);
-       }
-       if(it1==s.end()){
-         s.insert(n2);
-         maxx= max(maxx,n2);
-       }
-       if(it1!=s.end() && it2!=s.end()){
-         low = min(n1,n2);
-       }
-     }
-   }
-   auto it = s.find(n);
-   if(it!=s.end()){
-     cout<<"Yes"<<endl;
+    int n;
+    cin>>n;
+    ll sum=0;
+    rep(i,0,n){
+        int temp;
+        cin>>temp;
+        sum+=temp;
+    }
+    ll a1 = sum%n;
+    ll ans = a1*(n-a1);
+    cout<<ans<<endl;
 
-   }
- else cout<<"No"<<endl;
 }
 
 
