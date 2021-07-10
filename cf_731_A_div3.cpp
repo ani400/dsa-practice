@@ -66,6 +66,36 @@ int mpow(int base, int exp);        //pow fumction O(logn) time
 
 
 void solve(){
+  int x1,y1,x2,y2,fx,fy;
+  cin>>x1>>y1>>x2>>y2>>fx>>fy;
+  int ans = abs(x1-x2) + abs(y1-y2);
+  if(x1!=x2 && y1!=y2) {
+    cout<< ans <<endl;
+    return;
+  }
+  int corr=0;
+  if(x1==fx || x2==fx){
+
+    int miny=min(y1,y2);
+    int maxy= max(y1,y2);
+   if(fy >miny && fy<maxy){
+      ans+=2;
+   }
+    
+  } else if(y1==fy || y2==fy){
+
+    int minx=min(x1,x2);
+    int maxx= max(x1,x2);
+   if(fx>minx && fx<maxx){
+      ans+=2;
+   }
+   
+  
+    
+  }
+
+
+   cout<<ans<<endl;
    
 }
 
@@ -79,7 +109,8 @@ int32_t main() {
 	#endif
 
 	ll t=1;
-    cin >> t;					
+    cin >> t;	
+   			
     while(t--)
 		solve();
    return 0;
