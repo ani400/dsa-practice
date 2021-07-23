@@ -65,22 +65,52 @@ int mpow(int base, int exp);        //pow fumction O(logn) time
 
 
 void solve(){
-   int n;
-   vector<string>v;
-   vector<int>count(5,0);
-   for(int i=0;i<n;i++){
-       string temp;
-       cin>>temp;
-       for(int j=0;j<temp.size();j++){
-           if(temp[j]=='a') count[0]++;
-           else if(temp[j]=='b') count[1]++;
-           else if(temp[j]=='c') count[2]++;
-           else if(temp[j]=='d') count[3]++;
-           else if(temp[j]=='e') count[4]++;
-       }
-   }
-   sort(count.begin(),count.end());
-   
+    int n,k;
+    cin>>n>>k;
+   vector<int>v(n);
+   scan(v,n);
+   int ans=0;
+   vector<int>ansarray;
+   int count=0;
+   map<char,int>mp,hash;
+   string s2="";
+    for(int i=0;i<n;i++){
+        mp[v[i]]++;
+    }
+      for(auto x:mp){
+         if(x.second>=k){
+             hash[x.first]=1;
+            ans++;
+         }
+         else if(x.second<k){
+            count+=x.second;
+            s2.push_back(x.first);
+         }
+      }
+    ans+= count/k;
+    int allcolor=1;
+    
+  rep(i,0,n){
+      if(s2.find(v[i]) != string::npos ){
+          ansarray.push_back(allcolor);
+          allcolor++;
+          if(allcolor==ans+1){
+              allcolor=1;
+          }
+      }
+      else if(hash.find(v[i]) != hash.end()){
+          ansarray.push_back(hash[v[i]]);
+          if(hash[v[i]]>0)  hash[v[i]]++;
+          if(hash[v[i]]==ans+1){
+              hash[v[i]]=0;
+          }
+      }
+  }
+
+  for(int i=0;i<n;i++)
+   cout<<ansarray[i]<<" ";
+
+   cout<<endl;
 }
 
 
@@ -93,7 +123,7 @@ int32_t main() {
 	#endif
 
 	ll t=1;
-   cin >> t;	
+     cin >> t;	
    			
     while(t--)
 		solve();

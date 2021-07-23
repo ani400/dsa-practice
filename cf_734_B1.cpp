@@ -65,7 +65,27 @@ int mpow(int base, int exp);        //pow fumction O(logn) time
 
 
 void solve(){
-   
+   string s;
+   cin>>s;
+   int n= s.size();
+   int ans=0;
+   int count=0;
+   map<char,int>mp;
+
+    for(int i=0;i<n;i++){
+        mp[s[i]]++;
+    }
+      for(auto x:mp){
+         if(x.second>=2){
+            ans++;
+         }
+         else if(x.second==1){
+            count++;
+         }
+      }
+    ans+=count/2;
+
+   cout<<ans<<endl;
 }
 
 
@@ -78,7 +98,7 @@ int32_t main() {
 	#endif
 
 	ll t=1;
-   // cin >> t;	
+     cin >> t;	
    			
     while(t--)
 		solve();
