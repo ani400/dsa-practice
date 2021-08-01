@@ -69,12 +69,6 @@ int cal(int a,int b){
 
 void solve(){
     int n;
-    int gcd1=1,gcd2=1;
-    int ans1,ans2;
-    for(int i=0;i<n;i++){
-        int a,b;
-        cin>>a>>b;
-         ans1= 0;
     }
 
 
