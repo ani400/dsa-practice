@@ -69,7 +69,7 @@ int cal(int a,int b){
 
 void solve(){
     int n;
-    }
+    
 
 
 }
